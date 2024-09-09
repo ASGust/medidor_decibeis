@@ -1,0 +1,15 @@
+buildscript {
+    ext {
+        // Definindo variáveis para versões específicas das bibliotecas Compose
+        compose_version = '1.4.3'
+        compose_material3_version = '1.1.0'
+    }
+}// Este é o arquivo de build de nível superior onde podemos adicionar configurações comuns a todos os subprojetos/módulos.
+plugins {
+    // Declarando o plugin para aplicativos Android, mas não o aplicando neste arquivo
+    id 'com.android.application' version '8.0.2' apply false
+    // Declarando o plugin para bibliotecas Android, também sem aplicar neste arquivo
+    id 'com.android.library' version '8.0.2' apply false
+    // Declarando o plugin Kotlin para Android, sem aplicar neste arquivo
+    id 'org.jetbrains.kotlin.android' version '1.8.21' apply false
+}

@@ -1,0 +1,80 @@
+plugins {
+    // Plugins utilizados no projeto: Android Application e Kotlin para Android
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    // Configurações principais do projeto Android
+    namespace 'gustavo.medidordcb'
+    compileSdk 33 // Versão do SDK para compilar o projeto
+
+    defaultConfig {
+        // Configurações padrão para a aplicação
+        applicationId 'gustavo.medidordcb' // ID único da aplicação
+        minSdk 26 // Versão mínima do SDK que a aplicação suporta
+        //noinspection OldTargetApi, já que meu dispositivo principal é API 31
+        targetSdk 31 // Versão do SDK para a qual a aplicação é direcionada
+        versionCode 2 // Código da versão da aplicação, incrementado com cada release
+        versionName "1.1" // Nome da versão da aplicação visível para os usuários
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner" // Runner para testes instrumentados
+        vectorDrawables {
+            useSupportLibrary true // Usa a biblioteca de suporte para drawables vetoriais
+        }
+    }
+
+    buildTypes {
+        release {
+            // Configurações específicas para a build de release
+            shrinkResources true // Remove recursos não utilizados
+            minifyEnabled true // Ativa a minificação do código
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro' // Configuração do ProGuard para ofuscação e otimização
+            signingConfig signingConfigs.debug  // Configuração de assinatura (deve ser substituída por uma configuração de assinatura personalizada para releases
+        }
+    }
+    compileOptions {
+        // Configurações de compatibilidade com Java
+        sourceCompatibility JavaVersion.VERSION_1_8 // Versão de compatibilidade do código-fonte
+        targetCompatibility JavaVersion.VERSION_1_8 // Versão de compatibilidade da saída do código
+    }
+    kotlinOptions {
+        // Configurações do Kotlin
+        jvmTarget = '1.8'  // Define a versão do JVM para o Kotlin
+    }
+    buildFeatures {
+        // Habilita o uso do Jetpack Compose
+        compose true
+    }
+    composeOptions {
+        // Configurações específicas para o Compose
+        kotlinCompilerExtensionVersion '1.4.7' // Versão da extensão do compilador Kotlin para Compose
+    }
+    packagingOptions {
+        // Configurações para empacotamento de recursos
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}' // Exclui arquivos específicos de meta-informações do pacote
+        }
+    }
+}
+
+dependencies {
+    // Dependências do projeto
+    implementation 'androidx.core:core-ktx:1.10.1'
+    implementation 'androidx.activity:activity-compose:1.7.2'
+    implementation "androidx.compose.ui:ui:$compose_version"
+    implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
+    implementation "androidx.compose.material3:material3:$compose_material3_version"
+    implementation "androidx.compose.material:material-icons-extended:1.4.3"    // Ícones não utilizados serão removidos pelo ProGuard na build de release
+    implementation "androidx.compose.material3:material3-window-size-class:$compose_material3_version"  // para obter a altura da tela
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'   // biblioteca de gráficos
+    implementation "com.google.accompanist:accompanist-permissions:0.30.1"  // manipulação de permissões na biblioteca Compose
+
+    // Dependências para testes
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
+    debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
+    debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_version"
+}

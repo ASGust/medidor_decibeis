@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Declara que o aplicativo requer o uso de um microfone no dispositivo. -->
+    <uses-feature android:name="android.hardware.microphone" android:required="true" />
+    <!-- Permissão para gravar áudio com o microfone. -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <!-- Permissão para usar o Wake Lock, que impede o dispositivo de entrar em modo de suspensão. -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <!-- Permissão para executar serviços em primeiro plano, essenciais para tarefas como gravação de áudio contínua. -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.SoundMeterESP"
+        tools:targetApi="s">
+        <!-- Declaração de uma Activity, que é o ponto de entrada principal do aplicativo. -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:theme="@style/Theme.SoundMeterESP"
+            android:launchMode="singleInstance">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                <!-- Define como essa Activity pode ser lançada pelo sistema. -->
+            </intent-filter>
+        </activity>
+        <!-- Declaração de um serviço, que é um componente que pode executar operações em segundo plano. -->
+        <service android:name=".ServicoMedicao"
+            android:enabled="true"
+            android:exported="false"
+            android:permission="android.permission.RECORD_AUDIO"
+            android:foregroundServiceType="microphone">
+            <!-- Define como este serviço pode ser iniciado por outros componentes do sistema. -->
+            <intent-filter>
+                <action android:name="gustavo.medidordcb.SoundMeterService" /> <!-- Define uma ação específica que o serviço responde. -->
+            </intent-filter>
+        </service>
+    </application>
+
+</manifest>

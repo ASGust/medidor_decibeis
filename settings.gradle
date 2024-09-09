@@ -1,0 +1,17 @@
+pluginManagement {
+    repositories {
+        google() // Adiciona o repositório do Google para plugins, como o Android Gradle Plugin.
+        mavenCentral() // Adiciona o repositório Maven Central, que é um repositório central de bibliotecas.
+        gradlePluginPortal() // Adiciona o portal de plugins do Gradle, que contém plugins desenvolvidos pela comunidade Gradle.
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google() // Adiciona o repositório do Google para dependências, como bibliotecas Android.
+        mavenCentral() // Adiciona o repositório Maven Central para dependências.
+        maven { url 'https://jitpack.io' } // Adiciona o JitPack como repositório adicional para dependências, útil para pacotes que não estão no Maven Central.
+    }
+}
+rootProject.name = "Medidor de Decibeis"
+include ':app'

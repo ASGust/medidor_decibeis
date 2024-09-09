@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  Arquivo de regras de extração de dados de amostra; descomente e personalize conforme necessário.
+  Veja https://developer.android.com/about/versions/12/backup-restore#xml-changes para mais detalhes.
+-->
+<data-extraction-rules>
+    <cloud-backup>
+        <!-- Aqui, use <include> e <exclude> para controlar o que é feito backup.
+        <include .../>
+        <exclude .../>
+        -->
+    </cloud-backup>
+    <!--
+    <device-transfer>
+        <include .../>
+        <exclude .../>
+    </device-transfer>
+    -->
+</data-extraction-rules>
