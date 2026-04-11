@@ -1,7 +1,7 @@
 <h1 align="center"> Medidor de Decibéis 📈 </h1>
 
 <p align="center">
-Aplicativo Android capaz de medir o som de um ambient. <br/>
+Aplicativo Android capaz de medir o som de um ambiente. <br/>
 
 </p>
 
